@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -11,6 +12,10 @@ Rails.application.routes.draw do
 
 
   root to: 'public/rakuten_games#index'
+
+  namespace :admin do
+    resources :rakuten_games,only: [:index,:show]
+  end
 
   scope module: :public do
     resources :users,only: [:show,:edit,:update]

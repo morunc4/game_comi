@@ -42,6 +42,9 @@
                 <%=link_to "ログアウト", destroy_user_session_path,method: :delete, class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
               </li>
             <%elsif%>
+              <li class="nav-item">
+                <%=link_to "ゲーム一覧", admin_rakuten_games_path,class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
+              </li>
 
             <% else %>
               <li class="nav-item">

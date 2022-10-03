@@ -1,0 +1,22 @@
+<p class="h4 bg-info pl-5">ゲーム一覧</p>
+<div class="container mt-2">
+  <table class="table">
+    <tbody>
+      <% @game.each do |game| %>
+        <tr>
+          <td class="col-2">
+            <%=link_to (image_tag(game.smallimage_url)), game.item_url %>
+
+          </td>
+          <td>
+            <%=link_to admin_rakuten_game_path(game.id) do %>
+              <%=game.title %>
+            <%end%>
+            <p class="mt-2"><%=game.reviews.count %>件のレビュー</p>
+          </td>
+          <td><%=game.hardware %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
