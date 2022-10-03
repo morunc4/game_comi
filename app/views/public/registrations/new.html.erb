@@ -1,0 +1,48 @@
+
+<div class="container mt-5">
+  <div class="col-md-6 mx-auto border border-success">
+    <p class="h3 border-2 mt-2">新規登録</p>
+    <div class="row mx-3">
+      <div class="col-md-10 mx-auto">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %>
+
+          <div class="field">
+            <label for="name" class="h5 mt-3">ニックネーム</label><br/>
+            <%=f.text_field :name,autofocus: true,id: "name",class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <label for="email" class="h5 mt-3">メールアドレス</label><br />
+
+            <%= f.email_field :email, autocomplete: "email",id: "email",class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <div class="h5 mb-0 mt-3">
+              <label for="password">パスワード</label>
+              <% if @minimum_password_length %>
+              <em><%= @minimum_password_length %> 文字以上</em>
+              <% end %><br />
+            </div>
+
+            <%= f.password_field :password, autocomplete: "new-password",class: "form-control col-7",id: "password" %>
+          </div>
+
+          <div class="field">
+            <label for ="password_confirmation" class="h5 mt-3">パスワード確認</label><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control col-7",id: "password_confirmation" %>
+          </div>
+
+          <div class="actions text-center">
+            <%= f.submit "新規登録",class: "btn btn-success mt-5 col-4" %>
+          </div>
+        <% end %>
+
+        <p class="mt-5 text-center">
+          アカウントをお持ちの方はこちら=><%=link_to "ログイン",new_user_session_path %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

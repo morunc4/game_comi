@@ -1,0 +1,55 @@
+<p class="h4 bg-info pl-5">レビュー一覧</p>
+<div class="container mt-2">
+  <div class="col-8 border border-success mx-auto">
+    <div class="h4 text-center mt-3 mb-5">
+      <p class="mb-4">
+        やりたいゲームを見付けたい<br>
+        レビューを共有したい<br>
+        そんな人のためのレビューサイトです
+      </p>
+      <div>
+        <%=link_to "ゲームを検索", search_rakuten_games_path %>
+      </div>
+
+    </div>
+  </div>
+  <div class="h4 bg-success col-2 text-white text-center mt-3">最新レビュー</div>
+  <div class="mx-auto">
+    <table class="table">
+      <tbody>
+        <% @review.each do |review| %>
+          <tr>
+            <td>
+              <%=link_to (image_tag(review.rakuten_game.smallimage_url)), review.rakuten_game.item_url %>
+            </td>
+            <td>
+              <%=link_to rakuten_game_reviews_path(review.rakuten_game_id) do %>
+                <p class="h5"><%=review.rakuten_game.title %></p>
+              <%end%>
+              <div class="row">
+                <p class="bg-secondary text-white">投稿者</p>　<%=review.user.name %> さん
+              </div>
+              <div class="row">
+                <p class="bg-secondary text-white">タイトル</p>　<%=review.title %>
+              </div>
+              <div class="row">
+                <%=truncate(review.review,omision: "...",lenght: 40) %>
+              </div>
+            </td>
+
+            <td>
+              <%=review.rakuten_game.hardware %>
+            </td>
+
+            <td class="col-1">
+              <%=review.score %>/5点
+            </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+
+
+  </div>
+
+</div>

@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="col-md-6 mx-auto border border-success">
+    <p class="h3 border-2 mt-2">ログイン</p>
+    <div class="row mx-3">
+      <div class="col-md-10 mx-auto">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <label for="email" class="h5 mt-3">メールアドレス</label><br />
+            <%= f.email_field :email, autocomplete: "email",id: "email",class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <label for="password" class="h5 mt-3">パスワード<br />
+            <%= f.password_field :password, autocomplete: "current-password",id: "password",class: "form-control" %>
+          </div>
+
+          <div class="actions text-center ">
+            <%= f.submit "ログイン",class: "btn btn-success mt-5 col-4"  %>
+          </div>
+        <% end %>
+
+        <p class="text-center mt-5">
+          アカウントがない方はこちら=><%=link_to "新規登録",new_user_registration_path %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

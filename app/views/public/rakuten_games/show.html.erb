@@ -1,0 +1,67 @@
+<p class="h4 bg-info pl-5">レビューを書く</p>
+<div class="container">
+  <div class="col-md-10 mx-auto">
+    <div class="border bg-light py-5">
+      <div class="row">
+        <div class="col-md-4 mx-auto mt-3">
+          <%=link_to (image_tag(@games.largeimage_url)), @games.item_url %>
+        </div>
+        <div class="col-md-7">
+
+          <p class="font-weight-bold h3"><%=@games.title %></p>
+
+          <p class="mt-5 h5">機種</p>
+          <p class="h5">
+            <%=@games.hardware %>
+          </p>
+
+
+          <div class="h5 mt-5">
+            <%=link_to "このゲームのレビューを見る",rakuten_game_reviews_path(@games.id) %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="review">
+      <%=form_with model: [@games,@review],url: rakuten_game_reviews_path(@games.id) do |f| %>
+
+
+        <p class="h3">評価</p>
+        <div class="row">
+          <%=f.radio_button :score, 1,class: "form-control form-control-sm col-1" %>
+          <%=f.label :score, "1点",class: "h3 mr-3" %>
+
+          <%=f.radio_button :score, 2,class: "form-control form-control-sm col-1" %>
+          <%=f.label :score, "2点",class: "h3 mr-3" %>
+
+          <%=f.radio_button :score, 3,class: "form-control form-control-sm col-1" %>
+          <%=f.label :score, "3点",class: "h3 mr-3" %>
+
+          <%=f.radio_button :score, 4,class: "form-control form-control-sm col-1" %>
+          <%=f.label :score, "4点",class: "h3 mr-3" %>
+
+          <%=f.radio_button :score, 5,class: "form-control form-control-sm col-1" %>
+          <%=f.label :score, "5点",class: "h3 mr-3" %>
+        </div>
+
+        <div class="form-group mt-3">
+          <%=f.label :title, "タイトル",class: "h3" %>
+          <%=f.text_field :title,class: "form-control" %>
+        </div>
+
+        <div class="form-group mt-3">
+          <%=f.label :review, "レビュー",class: "h3" %>
+          <%=f.text_area :review,size: "10x8",class: "form-control" %>
+        </div>
+
+        <div class="form-group mt-3 text-center">
+          <%=f.submit "投稿する",class: "btn btn-lg btn-success" %>
+        </div>
+
+
+      <%end%>
+    </div>
+  </div>
+</div>

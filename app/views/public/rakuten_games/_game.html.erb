@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="col-md-11 mx-auto">
+    <table class="table">
+      <tbody>
+        <% items.each do |item| %>
+          <tr>
+            <td class="col-2"><%=link_to (image_tag(item.medium_image_url)), item.item_url %></td>
+            <td><%=item.title %></td>
+            <td><%=item.hardware %></td>
+            <td>
+　　　　　　　<%=form_with model: game,url: rakuten_games_path do |f| %>
+                <%=f.hidden_field :title, :value=> item.title %>
+                <%=f.hidden_field :hardware, :value=> item.hardware %>
+                <%=f.hidden_field :smallimage_url, :value=> item.medium_image_url %>
+                <%=f.hidden_field :largeimage_url, :value=> item.large_image_url %>
+                <%=f.hidden_field :item_url, :value=> item.item_url %>
+
+                <%=f.submit 'レビューを書く',class: "btn btn-success" %>
+              <%end%>
+
+              <%=form_with model: game_index,url: review_rakuten_games_path,method: :post do |f| %>
+                <%=f.hidden_field :title, :value=> item.title %>
+                <%=f.hidden_field :hardware, :value=> item.hardware %>
+                <%=f.hidden_field :smallimage_url, :value=> item.medium_image_url %>
+                <%=f.hidden_field :largeimage_url, :value=> item.large_image_url %>
+                <%=f.hidden_field :item_url, :value=> item.item_url %>
+
+                <%=f.submit 'レビューを見る',class: "btn btn-primary mt-3" %>
+              <%end%>
+            </td>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

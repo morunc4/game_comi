@@ -1,0 +1,14 @@
+<p class="bg-info pl-5 h4">ゲーム検索</p>
+<div class="container">
+  <%= form_tag :search_rakuten_games, method: :get do  %>
+    <%= label_tag :keyword, 'キーワード検索' %>
+    <%= text_field_tag 'keyword', params[:keyword] %>
+
+    <%= submit_tag "検索" %>
+  <% end %>
+
+
+  <% if @items.present? %>
+    <%=render 'game',items: @items,game: @game,game_index: @game_index %>
+  <%end%>
+</div>
