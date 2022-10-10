@@ -41,14 +41,25 @@
               <li class="nav-item">
                 <%=link_to "ログアウト", destroy_user_session_path,method: :delete, class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
               </li>
-            <%elsif%>
+            <%elsif admin_signed_in? %>
               <li class="nav-item">
                 <%=link_to "ゲーム一覧", admin_rakuten_games_path,class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
+              </li>
+
+              <li class="nav-item">
+                <%=link_to "ユーザ一覧", admin_users_path,class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
+              </li>
+
+              <li class="nav-item">
+                <%=link_to "ログアウト", destroy_admin_session_path,method: :delete, class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
               </li>
 
             <% else %>
               <li class="nav-item">
                 <%=link_to "最新レビュー", root_path,class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%=link_to "検索", search_rakuten_games_path,class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
               </li>
               <li class="nav-item">
                 <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark mr-3 btn btn-outline-secondary' %>

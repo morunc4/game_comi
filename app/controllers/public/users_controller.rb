@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
   def show
     @review = Review.where(user_id: current_user.id)
   end

@@ -1,0 +1,22 @@
+<p class="h4 bg-info pl-5">会員一覧</p>
+<div class="container mt-2">
+  <table class="table">
+    <tbody>
+      <% @user.each do |user| %>
+        <tr>
+          <td class="col-2">
+            <%=image_tag user.get_image(100,100) %>
+
+          </td>
+          <td>
+            <%=link_to admin_user_path(user.id) do %>
+              <%=user.name %>
+            <%end%>
+            <p class="mt-2"><%=user.reviews.count %>件のレビュー</p>
+          </td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

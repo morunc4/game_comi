@@ -1,6 +1,12 @@
 class Public::ReviewsController < ApplicationController
+  before_action :authenticate_user!,except: [:index]
+
+
   def index
-    @user_review = Review.where(rakuten_game_id: (params[:rakuten_game_id]),user_id: current_user.id)
+    if user_signed_in?
+      @user_review = Review.where(rakuten_game_id: (params[:rakuten_game_id]),user_id: current_user.id)
+    end
+
     @rakuten_game = RakutenGame.find(params[:rakuten_game_id])
     @review=@rakuten_game.reviews
     @score=Review.average(:score)

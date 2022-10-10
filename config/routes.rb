@@ -14,7 +14,14 @@ Rails.application.routes.draw do
   root to: 'public/rakuten_games#index'
 
   namespace :admin do
-    resources :rakuten_games,only: [:index,:show]
+    resources :users,only: [:index,:show]
+    resources :rakuten_games,only: [:index,:show] do
+      resources :reviews,only: [:destroy] do
+        member do
+          delete :user_destroy
+        end
+      end
+    end
   end
 
   scope module: :public do

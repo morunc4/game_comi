@@ -1,4 +1,6 @@
 class Public::RakutenGamesController < ApplicationController
+  before_action :authenticate_user!,except: [:index,:search,:review]
+
   def index
 
     @review = Review.limit(20).order(created_at: :desc)
