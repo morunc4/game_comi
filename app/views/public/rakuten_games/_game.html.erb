@@ -8,24 +8,36 @@
             <td><%=item.title %></td>
             <td><%=item.hardware %></td>
             <td>
-　　　　　　　<%=form_with model: game,url: rakuten_games_path do |f| %>
-                <%=f.hidden_field :title, :value=> item.title %>
-                <%=f.hidden_field :hardware, :value=> item.hardware %>
-                <%=f.hidden_field :smallimage_url, :value=> item.medium_image_url %>
-                <%=f.hidden_field :largeimage_url, :value=> item.large_image_url %>
-                <%=f.hidden_field :item_url, :value=> item.item_url %>
+              <% if admin_signed_in? %>
+                <%=form_with model: game,url: admin_rakuten_games_path,method: :post do |f| %>
+                  <%=f.hidden_field :title, :value=> item.title %>
+                  <%=f.hidden_field :hardware, :value=> item.hardware %>
+                  <%=f.hidden_field :smallimage_url, :value=> item.medium_image_url %>
+                  <%=f.hidden_field :largeimage_url, :value=> item.large_image_url %>
+                  <%=f.hidden_field :item_url, :value=> item.item_url %>
 
-                <%=f.submit 'レビューを書く',class: "btn btn-success" %>
-              <%end%>
+                  <%=f.submit 'レビューを見る',class: "btn btn-primary mt-3" %>
+                <%end%>
+              <%else%>
+  　　　　      　　　<%=form_with model: game,url: rakuten_games_path do |f| %>
+                  <%=f.hidden_field :title, :value=> item.title %>
+                  <%=f.hidden_field :hardware, :value=> item.hardware %>
+                  <%=f.hidden_field :smallimage_url, :value=> item.medium_image_url %>
+                  <%=f.hidden_field :largeimage_url, :value=> item.large_image_url %>
+                  <%=f.hidden_field :item_url, :value=> item.item_url %>
 
-              <%=form_with model: game_index,url: review_rakuten_games_path,method: :post do |f| %>
-                <%=f.hidden_field :title, :value=> item.title %>
-                <%=f.hidden_field :hardware, :value=> item.hardware %>
-                <%=f.hidden_field :smallimage_url, :value=> item.medium_image_url %>
-                <%=f.hidden_field :largeimage_url, :value=> item.large_image_url %>
-                <%=f.hidden_field :item_url, :value=> item.item_url %>
+                  <%=f.submit 'レビューを書く',class: "btn btn-success" %>
+                <%end%>
 
-                <%=f.submit 'レビューを見る',class: "btn btn-primary mt-3" %>
+                <%=form_with model: game_index,url: review_rakuten_games_path,method: :post do |f| %>
+                  <%=f.hidden_field :title, :value=> item.title %>
+                  <%=f.hidden_field :hardware, :value=> item.hardware %>
+                  <%=f.hidden_field :smallimage_url, :value=> item.medium_image_url %>
+                  <%=f.hidden_field :largeimage_url, :value=> item.large_image_url %>
+                  <%=f.hidden_field :item_url, :value=> item.item_url %>
+
+                  <%=f.submit 'レビューを見る',class: "btn btn-primary mt-3" %>
+                <%end%>
               <%end%>
             </td>
 

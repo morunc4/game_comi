@@ -43,6 +43,9 @@
               </li>
             <%elsif admin_signed_in? %>
               <li class="nav-item">
+                <%=link_to "検索", search_rakuten_games_path,class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
                 <%=link_to "ゲーム一覧", admin_rakuten_games_path,class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
               </li>
 
@@ -74,5 +77,11 @@
       </nav>
     </header>
     <%= yield %>
+    <footer>
+      <div class="bg-info pt-2 mt-4"></div>
+      <div class="text-center mt-4 mb-4">
+        <a href="https://webservice.rakuten.co.jp/" target="_blank"><img src="https://webservice.rakuten.co.jp/img/credit/200709/credit_31130.gif" border="0" alt="Rakuten Web Service Center" title="Rakuten Web Service Center" width="311" height="30"/></a>
+      </div>
+    </footer>
   </body>
 </html>

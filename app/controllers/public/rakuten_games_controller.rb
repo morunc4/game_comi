@@ -27,9 +27,6 @@ class Public::RakutenGamesController < ApplicationController
       @game.save
       redirect_to rakuten_game_path(@game.id)
     end
-
-
-
   end
 
   def review

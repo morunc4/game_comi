@@ -1,4 +1,4 @@
-<p class="h4 bg-info pl-5">レビュー一覧</p>
+<p class="h4 bg-info pl-5">ゲーム詳細</p>
 <div class="container mt-2">
   <div class="col-md-10 mx-auto">
     <div class="border bg-light py-5">
@@ -95,5 +95,9 @@
       </tbody>
     </table>
   </div>
-
+  <div class="row">
+    <div class="col-md-2 mt-2 mb-2 mx-auto">
+      <%= paginate @review,window: 1,outer_window: 1 %>
+    </div>
+  </div>
 </div>

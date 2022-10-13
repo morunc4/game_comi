@@ -8,7 +8,7 @@ class Public::ReviewsController < ApplicationController
     end
 
     @rakuten_game = RakutenGame.find(params[:rakuten_game_id])
-    @review=@rakuten_game.reviews
+    @review=@rakuten_game.reviews.page(params[:page]).order(created_at: :desc).per(20)
     @score=Review.average(:score)
   end
 

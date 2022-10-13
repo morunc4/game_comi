@@ -16,7 +16,14 @@
           </td>
           <td><%=game.hardware %></td>
         </tr>
+
       <% end %>
     </tbody>
+
   </table>
+  <div class="row">
+    <div class="col-md-2 mt-2 mb-2 mx-auto">
+      <%= paginate @game,window: 1,outer_window: 1 %>
+    </div>
+  </div>
 </div>
