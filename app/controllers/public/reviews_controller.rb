@@ -1,5 +1,5 @@
 class Public::ReviewsController < ApplicationController
-  before_action :authenticate_user!,except: [:index]
+  before_action :authenticate_user!,except: [:index,:show]
 
 
   def index
@@ -26,6 +26,13 @@ class Public::ReviewsController < ApplicationController
     end
 
 
+  end
+
+  def show
+    @rakuten_game = RakutenGame.find(params[:rakuten_game_id])
+    @review=Review.find(params[:id])
+    @comment=Comment.new
+    @comments=@review.comments.all
   end
 
   def edit

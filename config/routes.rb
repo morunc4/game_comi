@@ -27,7 +27,10 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :users,only: [:show,:edit,:update]
     resources :rakuten_games,only: [:show,:create] do
-      resources :reviews,only: [:create,:index,:update,:edit,:destroy]
+      resources :reviews,only: [:create,:index,:show,:update,:edit,:destroy] do
+        resources :comments, only: [:destroy,:create]
+
+      end
       collection do
         get :search
         post :review

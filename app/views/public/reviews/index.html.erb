@@ -49,8 +49,15 @@
                 <div class="row">
                   <p class="bg-secondary text-white">評価</p>　<%=review.score %>/5点
                 </div>
-                <p class="font-weight-bold"><%=review.title %></p>
+                <p class="font-weight-bold">
+                  <%=link_to rakuten_game_review_path(@rakuten_game,review.id) do %>
+                    <%=review.title %>
+                  <%end%>
+                </p>
                 <p><%=review.review %></p>
+                <%=link_to rakuten_game_review_path(@rakuten_game,review.id) do %>
+                  <%=review.comments.count %>件のコメント
+                <%end%>
 
               </td>
 
@@ -81,11 +88,19 @@
                 <div class="row">
                   <p class="bg-secondary text-white">評価</p>　<%=review.score %>/5点
                 </div>
-                <p class="font-weight-bold"><%=review.title %></p>
+                <p class="font-weight-bold">
+                  <%=link_to rakuten_game_review_path(@rakuten_game,review.id) do %>
+                    <%=review.title %>
+                  <%end%>
+                </p>
                 <p><%=review.review %></p>
+                <%=link_to rakuten_game_review_path(@rakuten_game,review.id) do %>
+                  <%=review.comments.count %>件のコメント
+                <%end%>
 
               </td>
             </tr>
+
           <%end%>
         <%else%>
           <div class="h5 text-center mt-5">
