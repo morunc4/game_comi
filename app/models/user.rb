@@ -4,10 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :image
+
   has_many :reviews, dependent: :destroy
   has_many :comments,dependent: :destroy
 
-  has_one_attached :image
+
 
   def get_image(width, height)
     unless image.attached?

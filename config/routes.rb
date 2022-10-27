@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users,only: [:index,:show]
     resources :rakuten_games,only: [:index,:show,:create] do
-      resources :reviews,only: [:destroy] do
+      resources :reviews,only: [:show,:destroy] do
+        resources :comments,only: [:destroy]
         member do
           delete :user_destroy
         end

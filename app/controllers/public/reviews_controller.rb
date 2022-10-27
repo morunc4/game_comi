@@ -21,7 +21,7 @@ class Public::ReviewsController < ApplicationController
       redirect_to root_path
     else
       @games=RakutenGame.find(params[:rakuten_game_id])
-      @review = Review.new
+
       render template: "public/rakuten_games/show"
     end
 
