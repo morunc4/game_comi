@@ -4,6 +4,7 @@
     <div class="row mx-3">
       <div class="col-md-10 mx-auto">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <p class="alert"><%= alert %></p>
           <div class="field">
             <label for="email" class="h5 mt-3">メールアドレス</label><br />
             <%= f.email_field :email, autocomplete: "email",id: "email",class: "form-control" %>

@@ -16,7 +16,7 @@ class Public::ReviewsController < ApplicationController
     @rakuten_game=RakutenGame.find(params[:rakuten_game_id])
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    @review.rakuten_game_id=@rakuten_game.id
+    @review.rakuten_game_id = @rakuten_game.id
     if @review.save
       redirect_to root_path
     else

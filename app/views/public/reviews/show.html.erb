@@ -19,6 +19,9 @@
         </td>
       </tr>
     </table>
+    <% if @review.errors.any? %>
+      <p class="h4 text-danger my-3">コメントを入力して下さい</p>
+    <%end%>
     <% if user_signed_in? %>
       <div class="mt-3">
         <%=form_with model: [@rakuten_game,@review,@comment] do |f| %>
