@@ -34,7 +34,7 @@
   <div class="col-md-10 mx-auto">
 
     <% if @user_review.present? %>
-      <p class="h4 bg-success text-white col-3 text-center mt-3">自分のレビュー</p>
+      <p class="col-md-3 col-sm-6 h4 bg-success text-white text-center mt-3">自分のレビュー</p>
       <table class="table">
         <tbody>
           <% @user_review.each do |review| %>
@@ -72,7 +72,7 @@
       </table>
     <%end %>
 
-    <p class="h4 bg-success text-white col-3 text-center mt-3">レビュー一覧</p>
+    <p class="col-md-3 col-sm-6 h4 bg-success text-white text-center mt-3">レビュー一覧</p>
     <table class="table">
       <tbody>
         <% if @review.present? %>
