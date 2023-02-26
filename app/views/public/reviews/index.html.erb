@@ -42,7 +42,7 @@
               <td class="col-2">
                 <%=image_tag review.user.get_image(100,100) %>
               </td>
-              <td class="col-8">
+              <td class="col-lg-8 col-sm-6">
                 <div class="row">
                   <p class="bg-secondary text-white">投稿者</p>　<%=review.user.name %> さん
                 </div>
@@ -62,7 +62,7 @@
               </td>
 
 
-              <td class="col-2">
+              <td class="col-lg-2 col-sm-4">
                 <%=link_to "編集する",edit_rakuten_game_review_path(@rakuten_game,review.id),class: "btn btn-success btn-sm" %>
                 <%=link_to "削除する",rakuten_game_review_path(@rakuten_game,review), method: :delete,"data-confirm"=>"本当に削除しますか？",class: "btn btn-danger btn-sm mt-2" %>
               </td>
